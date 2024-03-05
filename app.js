@@ -1,11 +1,24 @@
 // Abaixo temos uma função "sortear", onde temos três vareaveis descritas como "quantidade", "de" e "ate", cada uma está buscando o id no HTML com o "document.getElementById" querendo o "value", valor do input
 // Rodamos alguns "Alert", para saber como está "alert (`Quantidade: ${quantidade}`);"
-function sortear() {
-    let quantidade = document.getElementById ('quantidade').value;
-    let de = document.getElementById ('de').value;
-    let ate = document.getElementById ('ate').value;
+// O parseInt, faz com que o que é digitado no input, seja um Numero e nao uma Sting (texto);
 
-    alert (`Quantidade: ${quantidade}`);
-    alert (`Do numero: ${de}`);
-    alert (`Até o número: ${ate}`);
+function sortear() {
+    let quantidade = parseInt(document.getElementById ('quantidade').value);
+    let de = parseInt(document.getElementById ('de').value);
+    let ate = parseInt(document.getElementById ('ate').value);
+
+    let sorteados = [];
+    let numero;
+
+    for (let i = 0; i < quantidade; i++) {
+        numero = obterNumeroAleatorio(de, ate);
+        sorteados.push (numero);
+    }
+
+    alert(sorteados);
+}
+
+
+function obterNumeroAleatorio (min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
 }
